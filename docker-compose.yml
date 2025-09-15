@@ -27,8 +27,6 @@ services:
       dockerfile: Services/UserService/Dockerfile
     ports:
       - "5001:5001"
-    depends_on:
-      - consul
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5001
@@ -39,8 +37,6 @@ services:
       dockerfile: Services/ProductService/Dockerfile
     ports:
       - "5002:5002"
-    depends_on:
-      - consul
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5002
@@ -51,10 +47,6 @@ services:
       dockerfile: Services/OrderService/Dockerfile
     ports:
       - "5003:5003"
-    depends_on:
-      - consul
-      - user-service
-      - product-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5003
@@ -65,8 +57,6 @@ services:
       dockerfile: Services/NotificationService/Dockerfile
     ports:
       - "5004:5004"
-    depends_on:
-      - consul
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5004

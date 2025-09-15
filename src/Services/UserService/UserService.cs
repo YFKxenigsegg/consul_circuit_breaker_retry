@@ -27,7 +27,6 @@ public class UserService(
     public async Task<User> CreateUserAsync(CreateUserRequest request)
     {
         _logger.LogInformation($"Creating user with email: {request.Email}");
-
         var user = new User
         {
             Email = request.Email,
