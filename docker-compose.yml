@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   consul:
     image: consul:1.15
@@ -12,7 +10,7 @@ services:
   gateway:
     build: 
       context: .
-      dockerfile: ApiGateway/Dockerfile
+      dockerfile: src/ApiGateway/Dockerfile
     ports:
       - "5000:5000"
     depends_on:
@@ -24,7 +22,7 @@ services:
   user-service:
     build: 
       context: .
-      dockerfile: Services/UserService/Dockerfile
+      dockerfile: src/Services/UserService/Dockerfile
     ports:
       - "5001:5001"
     environment:
@@ -34,7 +32,7 @@ services:
   product-service:
     build: 
       context: .
-      dockerfile: Services/ProductService/Dockerfile
+      dockerfile: src/Services/ProductService/Dockerfile
     ports:
       - "5002:5002"
     environment:
@@ -44,7 +42,7 @@ services:
   order-service:
     build: 
       context: .
-      dockerfile: Services/OrderService/Dockerfile
+      dockerfile: src/Services/OrderService/Dockerfile
     ports:
       - "5003:5003"
     environment:
@@ -54,7 +52,7 @@ services:
   notification-service:
     build: 
       context: .
-      dockerfile: Services/NotificationService/Dockerfile
+      dockerfile: src/Services/NotificationService/Dockerfile
     ports:
       - "5004:5004"
     environment:
