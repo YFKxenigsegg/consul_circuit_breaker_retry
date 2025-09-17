@@ -35,9 +35,9 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
                 .HasDefaultValue(false);
             entity.Property(e => e.CreatedAt)
                 .IsRequired()
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.Metadata)
-                .HasColumnType("nvarchar(max)");
+                .HasColumnType("text");
             entity.Property(e => e.RelatedEntityType)
                 .HasMaxLength(50);
 
@@ -66,18 +66,18 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
 
             entity.Property(e => e.Template)
                 .IsRequired()
-                .HasColumnType("nvarchar(max)");
+                .HasColumnType("text");
 
             entity.Property(e => e.IsActive)
                 .HasDefaultValue(true);
 
             entity.Property(e => e.CreatedAt)
                 .IsRequired()
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
 
             entity.Property(e => e.UpdatedAt)
                 .IsRequired()
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
 
             // Indexes
             entity.HasIndex(e => new { e.Type, e.Channel }).IsUnique();
@@ -110,8 +110,8 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
                     <p>Order Date: {{OrderDate}}</p>
                 ",
                 IsActive = true,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             },
             new NotificationTemplate
             {
@@ -126,8 +126,8 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
                     <p>Expected delivery: 3-5 business days</p>
                 ",
                 IsActive = true,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             },
             // In-App templates
             new NotificationTemplate
@@ -138,8 +138,8 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
                 Subject = "Order Confirmed",
                 Template = "Your order {{OrderNumber}} for ${{TotalAmount}} has been confirmed and is being processed.",
                 IsActive = true,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             }
         );
     }

@@ -74,7 +74,7 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options)
                 Price = 1299.99m,
                 Stock = 25,
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 IsActive = true
             },
             new Product
@@ -85,7 +85,7 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options)
                 Price = 49.99m,
                 Stock = 150,
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 IsActive = true
             },
             new Product
@@ -96,7 +96,7 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options)
                 Price = 299.99m,
                 Stock = 30,
                 Category = "Furniture",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 IsActive = true
             },
             new Product
@@ -107,7 +107,7 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options)
                 Price = 39.99m,
                 Stock = 100,
                 Category = "Books",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 IsActive = true
             },
             new Product
@@ -118,7 +118,7 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options)
                 Price = 14.99m,
                 Stock = 200,
                 Category = "Home",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 IsActive = true
             }
         );

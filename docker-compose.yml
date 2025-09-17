@@ -7,6 +7,17 @@ services:
       - CONSUL_BIND_INTERFACE=eth0
     command: consul agent -dev -client=0.0.0.0 -ui
 
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   gateway:
     build: 
       context: .
@@ -25,8 +36,10 @@ services:
       dockerfile: src/Services/UserService/Dockerfile
     ports:
       - "5001:5001"
+    depends_on:
+      - postgres
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:5001
 
   product-service:
@@ -35,8 +48,10 @@ services:
       dockerfile: src/Services/ProductService/Dockerfile
     ports:
       - "5002:5002"
+    depends_on:
+      - postgres
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:5002
 
   order-service:
@@ -45,8 +60,10 @@ services:
       dockerfile: src/Services/OrderService/Dockerfile
     ports:
       - "5003:5003"
+    depends_on:
+      - postgres
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:5003
 
   notification-service:
@@ -55,6 +72,11 @@ services:
       dockerfile: src/Services/NotificationService/Dockerfile
     ports:
       - "5004:5004"
+    depends_on:
+      - postgres
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:5004
+
+volumes:
+  postgres_data:

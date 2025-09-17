@@ -1,3 +1,10 @@
+# Ignore secrets and sensitive files
+secrets.json
+secrets.*.json
+*.secrets.json
+load-secrets.ps1
+start-secure.ps1
+
 # Ignore build artifacts
 **/bin/
 **/obj/
